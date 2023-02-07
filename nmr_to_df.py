@@ -28,21 +28,22 @@ def nmr_to_pandas(
 ):
     """Convert NMR data to a pandas dataframe.
 
-    This function reads NMR data from a pipe file, guesses the number of dimensions in the data, and converts the data into a pandas dataframe. If the number of dimensions is 1, 2, or 3, the corresponding columns in the dataframe are named "Z", "Y", "X", and "intensity", in that order. If a pseudo-dimension is specified, the corresponding column will not be transformed into PPM values.
+    This function reads NMR data from a pipe file, guesses the number of dimensions in the data, and converts the data into a pandas dataframe. Points are converted to PPM values using nmrglue unit conversion objects. If a pseudo-dimension is specified, the corresponding column will not be transformed into PPM values.
 
     Parameters
     ----------
-    path : Path
-        The path to the pipe file containing the NMR data.
+    path : str | Path
+        The path to the nmrPipe file containing the data.
     pseudo_dim : int | None, optional
-        The index of the pseudo-dimension, if any. The default is None.
+        The index of the pseudo-dimension, if any. For example, if the Z dimension is a pseudo dimension
+        pseudo_dim = 0. The default is None.
     verbose_mode : bool, optional
         Whether to display additional information while running the function. The default is False.
 
     Returns
     -------
-    df : pandas.DataFrame
-        The NMR data as a pandas dataframe.
+    nmrData : nmrData
+        A dataclass containing NMR data
     """
     dic, data = ng.pipe.read(path)
     udic = ng.pipe.guess_udic(dic, data)
