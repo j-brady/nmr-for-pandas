@@ -1,0 +1,26 @@
+# .gitignore
+
+# dependencies
+/vendor/
+/dist/
+/build/
+
+# local environment
+venv/
+*.egg-info/
+*.pyc
+__pycache__/
+*.egg
+*.egg-link
+*.whl
+
+# poetry files
+poetry.lock
+
+# build artifacts
+*.tar.gz
+*.tar.bz2
+
+# data files
+*.pkl
+*.ft2
