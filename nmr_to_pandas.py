@@ -31,6 +31,7 @@ class nmrData:
         query: Optional[str] = None,
         axis_labels=True,
         invert_axes=False,
+        show_cs=False,
         threshold: Union[str, float, None] = "otsu",
         kwargs={},
     ):
@@ -71,10 +72,21 @@ class nmrData:
                 set the contour line colors (takes precedence of cmap)
             cmap : str
                 matplotlib colormap name. If colors is set then this is not used.
+
         axis_labels : bool
             Automatically generate axis labels based on udic dim labels
         invert_axes : bool
             Invert X and Y axes for NMR conventions
+        show_cs : bool
+            Annotate the figure with the contour start threshold
+            Default is False
+        threshold : "otsu" | float | None
+            The threshold above which contours at plotted. If "otsu" then the otsu method
+            for image thresholding is used (see scikit-image docs). Otherwise the threshold 
+            is explicitly set using a float value. If None then the threshold is calculated 
+            using the `nstd` value in the kwargs dict. By default this is set to 5 standard 
+            deviations over the median intensity value.
+            Default is "otsu"
 
         Returns
         -------
@@ -142,9 +154,18 @@ class nmrData:
         if axis_labels:
             ax.set_xlabel(self.udic[self.uc_dic["X"]["dim"]]["label"])
             ax.set_ylabel(self.udic[self.uc_dic["Y"]["dim"]]["label"])
+
         if invert_axes:
             ax.invert_xaxis()
             ax.invert_yaxis()
+
+        if self.name is not None:
+            if contour_kwargs.get("colors"):
+                if show_cs:
+                    self.name = self.name + f" (cs={self.threshold:.2e})"
+                # hack for legends
+                ax.plot([],[],color=contour_kwargs.get("colors")[0], label=self.name)
+                ax.legend(loc="lower center",bbox_to_anchor=(0.5,1.05))
         return ax
 
 

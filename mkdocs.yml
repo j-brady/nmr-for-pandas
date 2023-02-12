@@ -1,1 +1,10 @@
-site_name: My Docs
+site_name: NMR for Pandas
+
+theme:
+    name: material
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+

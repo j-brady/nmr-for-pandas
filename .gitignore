@@ -4,6 +4,7 @@
 /vendor/
 /dist/
 /build/
+/site/
 
 # local environment
 venv/
