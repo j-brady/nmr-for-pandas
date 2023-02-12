@@ -68,12 +68,14 @@ plt.grid()
 Here is an example of how you might overlay some spectra for comparison (I'm just shifting and overlaying the same spectrum for illustrative purposes):
 
 ``` Python
+colors = plt.cm.get_cmap("Set1")
+colors = iter([colors(i) for i in range(20)])
 fig = plt.figure()
 ax = fig.add_subplot(111)
 for i in range(3):
     data.name = f" Example {i+3}"
     kwargs=dict(colors=[next(colors)], negative_contours=dict(colors="red"))
-    ax = data.plot_contour(ax, query=f"Z==0 & X_PPM > 7 & X_PPM < 9.5 & Y_PPM > 110 & Y_PPM < 125", kwargs=kwargs)
+    ax = data.plot_contour(ax, query=f"Z==0 & X_PPM > 7 & X_PPM < 9.5 & Y_PPM > 110 & Y_PPM < 125", kwargs=kwargs, show_cs=True)
     data.df["Y_PPM"] = data.df.Y_PPM + 1.0
     data.df["X_PPM"] = data.df.X_PPM + 0.1
 ax.invert_yaxis()
@@ -81,3 +83,33 @@ ax.invert_xaxis()
 ```
 
 ![overlay](static/overlay.png)
+
+## Customizing plots
+
+### Colors
+Any matplotlib colormap can be used in the following way by providing its name as a string:
+
+``` Python
+kwargs=dict(cmap="viridis", negative_contours=dict(colors="red"))
+```
+!!! note
+    If `colors` is provided then this takes precedence over any `cmap` definition.
+    e.g. if `kwargs=dict(cmap="viridis", colors="red")` then contours will be drawn `red` and `viridis` will be ignored. 
+
+### Legends
+
+If the `name` attribute of your `nmrData` object is populated with a string then this will be used to create a legend for your contour plot.
+
+``` Python
+data = nmr_to_pandas("test_pipe.ft2", pseudo_dim=0)
+data.name = "Example 1"
+```
+
+If `show_cs=True` then the value of the contour start (cs) or `threshold` value is shown in the legend.
+
+``` Python 
+data.plot_contour(ax, query="Z==0", kwargs=kwargs, threshold=1e7, show_cs=True, invert_axes=True)
+```
+
+!!! note
+    Legends are only available for contour plots using `colors` and not `cmaps`. 
