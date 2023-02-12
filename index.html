@@ -231,6 +231,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#customizing-plots" class="md-nav__link">
+    Customizing plots
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing plots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    Colors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legends" class="md-nav__link">
+    Legends
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -291,6 +318,33 @@
   <a href="#plotting" class="md-nav__link">
     Plotting
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-plots" class="md-nav__link">
+    Customizing plots
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing plots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    Colors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legends" class="md-nav__link">
+    Legends
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -357,18 +411,42 @@
 </code></pre></div>
 <p><img alt="zoom" src="static/zoom.png" /></p>
 <p>Here is an example of how you might overlay some spectra for comparison (I'm just shifting and overlaying the same spectrum for illustrative purposes):</p>
-<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Set1&quot;</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="n">colors</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; Example </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Z==0 &amp; X_PPM &gt; 7 &amp; X_PPM &lt; 9.5 &amp; Y_PPM &gt; 110 &amp; Y_PPM &lt; 125&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Z==0 &amp; X_PPM &gt; 7 &amp; X_PPM &lt; 9.5 &amp; Y_PPM &gt; 110 &amp; Y_PPM &lt; 125&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">show_cs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y_PPM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">Y_PPM</span> <span class="o">+</span> <span class="mf">1.0</span>
     <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;X_PPM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">X_PPM</span> <span class="o">+</span> <span class="mf">0.1</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
 </code></pre></div>
 <p><img alt="overlay" src="static/overlay.png" /></p>
+<h2 id="customizing-plots">Customizing plots</h2>
+<h3 id="colors">Colors</h3>
+<p>Any matplotlib colormap can be used in the following way by providing its name as a string:</p>
+<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code>colors</code> is provided then this takes precedence over any <code>cmap</code> definition.
+e.g. if <code>kwargs=dict(cmap="viridis", colors="red")</code> then contours will be drawn <code>red</code> and <code>viridis</code> will be ignored. </p>
+</div>
+<h3 id="legends">Legends</h3>
+<p>If the <code>name</code> attribute of your <code>nmrData</code> object is populated with a string then this will be used to create a legend for your contour plot.</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">nmr_to_pandas</span><span class="p">(</span><span class="s2">&quot;test_pipe.ft2&quot;</span><span class="p">,</span> <span class="n">pseudo_dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Example 1&quot;</span>
+</code></pre></div>
+<p>If <code>show_cs=True</code> then the value of the contour start (cs) or <code>threshold</code> value is shown in the legend.</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">&quot;Z==0&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1e7</span><span class="p">,</span> <span class="n">show_cs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">invert_axes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Legends are only available for contour plots using <code>colors</code> and not <code>cmaps</code>. </p>
+</div>
 
 
 
