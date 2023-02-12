@@ -1,181 +1,416 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="install/">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+    
+    
+      
+        <title>NMR for Pandas</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.0d440cfe.min.css">
+      
         
-        
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>My Docs</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body class="homepage">
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href=".">My Docs</a>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
+        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
+      
+      
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#using-pandas-for-nmr-data" class="nav-link">Using pandas for NMR data</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#loading-data" class="nav-link">Loading data</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#plotting" class="nav-link">Plotting</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-pandas-for-nmr-data" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="NMR for Pandas" class="md-header__button md-logo" aria-label="NMR for Pandas" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NMR for Pandas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using pandas for NMR data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="NMR for Pandas" class="md-nav__button md-logo" aria-label="NMR for Pandas" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NMR for Pandas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Using pandas for NMR data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Using pandas for NMR data
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    Loading data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting" class="md-nav__link">
+    Plotting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="install/" class="md-nav__link">
+        How to install
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    Loading data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting" class="md-nav__link">
+    Plotting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
 
 <h1 id="using-pandas-for-nmr-data">Using pandas for NMR data</h1>
 <h2 id="loading-data">Loading data</h2>
-<pre><code class="language-Python">from nmr_to_pandas import nmr_to_pandas
-# load a pseudo 3D dataset. `pseudo_dim=0` sets the pseudo dimension assuming
-# your data has shape (Z,Y,X)
-data = nmr_to_pandas(&quot;test_pipe.ft2&quot;, pseudo_dim=0)
-# your data object now has the attribute `df`
-data.df.head()
-</code></pre>
-<p>You now have your NMR data in the form of a pandas dataframe where <code>Z</code> is the plane number, <code>Y</code> and <code>X</code> are points</p>
-<pre><code class="language-console">     Z    Y    X     intensity       Y_PPM      X_PPM
-0  0.0  0.0  0.0 -24273.875000  130.538386  10.498205
-1  0.0  0.0  1.0 -33351.800781  130.538386  10.490872
-2  0.0  0.0  2.0  -9466.987305  130.538386  10.483539
-3  0.0  0.0  3.0  -1997.709473  130.538386  10.476206
-4  0.0  0.0  4.0  10106.075195  130.538386  10.468873
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nmr_to_pandas</span> <span class="kn">import</span> <span class="n">nmr_to_pandas</span>
+<span class="c1"># load a pseudo 3D dataset. `pseudo_dim=0` sets the pseudo dimension assuming</span>
+<span class="c1"># your data has shape (Z,Y,X) where Z is the pseudo dimension</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">nmr_to_pandas</span><span class="p">(</span><span class="s2">&quot;test_pipe.ft2&quot;</span><span class="p">,</span> <span class="n">pseudo_dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># your data object now has the attribute `df`</span>
+<span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<p>You now have your NMR data in the form of a pandas dataframe where <code>Z</code> is the plane number and <code>Y</code> and <code>X</code> are points. The <code>intensity</code> column contains the intensity for each point and for convenience the X and Y ppm values are also provided (<code>X_PPM</code> and <code>Y_PPM</code>, respectively).</p>
+<div class="highlight"><pre><span></span><code><span class="go">     Z    Y    X     intensity       Y_PPM      X_PPM</span>
+<span class="go">0  0.0  0.0  0.0 -24273.875000  130.538386  10.498205</span>
+<span class="go">1  0.0  0.0  1.0 -33351.800781  130.538386  10.490872</span>
+<span class="go">2  0.0  0.0  2.0  -9466.987305  130.538386  10.483539</span>
+<span class="go">3  0.0  0.0  3.0  -1997.709473  130.538386  10.476206</span>
+<span class="go">4  0.0  0.0  4.0  10106.075195  130.538386  10.468873</span>
+</code></pre></div>
 <p>To slice out data you can use the <code>pandas.Dataframe.query</code> method.</p>
-<pre><code class="language-Python">data.df.query(&quot;Z==1 &amp; Y_PPM &lt; 120 and X_PPM &lt; 9&quot;)
-</code></pre>
-<pre><code class="language-console">          Z      Y      X     intensity       Y_PPM     X_PPM
-201679  1.0  113.0  205.0  32269.908203  119.945665  8.994906
-201680  1.0  113.0  206.0  73720.929688  119.945665  8.987572
-201681  1.0  113.0  207.0 -35410.578125  119.945665  8.980239
-201682  1.0  113.0  208.0    715.999634  119.945665  8.972906
-201683  1.0  113.0  209.0  37729.289062  119.945665  8.965573
-</code></pre>
-<h2 id="plotting">Plotting</h2></div>
-            </div>
-        </div>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Z==1 &amp; Y_PPM &lt; 120 and X_PPM &lt; 9&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="go">          Z      Y      X     intensity       Y_PPM     X_PPM</span>
+<span class="go">201679  1.0  113.0  205.0  32269.908203  119.945665  8.994906</span>
+<span class="go">201680  1.0  113.0  206.0  73720.929688  119.945665  8.987572</span>
+<span class="go">201681  1.0  113.0  207.0 -35410.578125  119.945665  8.980239</span>
+<span class="go">201682  1.0  113.0  208.0    715.999634  119.945665  8.972906</span>
+<span class="go">201683  1.0  113.0  209.0  37729.289062  119.945665  8.965573</span>
+</code></pre></div>
+<h2 id="plotting">Plotting</h2>
+<p>To create a matplotlib contour plot of the data:</p>
+<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">))</span>
+<span class="c1"># create figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="c1"># contour plot of first plane (Z==0) </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Z==0&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">show_cs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">invert_axes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="full" src="static/full_spectrum.png" /></p>
+<p>To zoom on a specific region:</p>
+<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">))</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Z==1 &amp; X_PPM &gt; 7.24 &amp; X_PPM &lt; 7.28 &amp; Y_PPM &gt; 124.8 &amp; Y_PPM &lt; 125.3&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1e7</span><span class="p">,</span> <span class="n">show_cs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">invert_axes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="zoom" src="static/zoom.png" /></p>
+<p>Here is an example of how you might overlay some spectra for comparison (I'm just shifting and overlaying the same spectrum for illustrative purposes):</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; Example </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Z==0 &amp; X_PPM &gt; 7 &amp; X_PPM &lt; 9.5 &amp; Y_PPM &gt; 110 &amp; Y_PPM &lt; 125&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y_PPM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">Y_PPM</span> <span class="o">+</span> <span class="mf">1.0</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;X_PPM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">X_PPM</span> <span class="o">+</span> <span class="mf">0.1</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="overlay" src="static/overlay.png" /></p>
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = ".",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+
+
+                
+              </article>
             </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
+          
+          
         </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-
-    </body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6df46069.min.js"></script>
+      
+    
+  </body>
 </html>
-
-<!--
-MkDocs version : 1.4.2
-Build Date UTC : 2023-02-12 18:48:00.349859+00:00
--->
