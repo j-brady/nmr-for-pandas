@@ -42,6 +42,7 @@ data.df.query("Z==1 & Y_PPM < 120 and X_PPM < 9")
 To create a matplotlib contour plot of the data:
 
 ``` Python
+data.name = "Example 1"
 kwargs=dict(colors="red", negative_contours=dict(colors="orange"))
 # create figure
 fig = plt.figure()
@@ -55,6 +56,7 @@ ax = data.plot_contour(ax, query=f"Z==0", kwargs=kwargs, show_cs=True, invert_ax
 To zoom on a specific region:
 
 ``` Python
+data.name = "Example 2"
 kwargs=dict(colors="tab:blue", negative_contours=dict(colors="orange"))
 query = "Z==1 & X_PPM > 7.24 & X_PPM < 7.28 & Y_PPM > 124.8 & Y_PPM < 125.3"
 fig = plt.figure()
@@ -72,7 +74,7 @@ colors = plt.cm.get_cmap("Set1")
 colors = iter([colors(i) for i in range(20)])
 fig = plt.figure()
 ax = fig.add_subplot(111)
-for i in range(3):
+for i in range(5):
     data.name = f" Example {i+3}"
     kwargs=dict(colors=[next(colors)], negative_contours=dict(colors="red"))
     ax = data.plot_contour(ax, query=f"Z==0 & X_PPM > 7 & X_PPM < 9.5 & Y_PPM > 110 & Y_PPM < 125", kwargs=kwargs, show_cs=True)
@@ -90,8 +92,11 @@ ax.invert_xaxis()
 Any matplotlib colormap can be used in the following way by providing its name as a string:
 
 ``` Python
-kwargs=dict(cmap="viridis", negative_contours=dict(colors="red"))
+kwargs=dict(cmap="viridis", linewidths=1.0, negative_contours=dict(colors="red"))
 ```
+
+![viridis](static/zoom_viridis.png)
+
 !!! note
     If `colors` is provided then this takes precedence over any `cmap` definition.
     e.g. if `kwargs=dict(cmap="viridis", colors="red")` then contours will be drawn `red` and `viridis` will be ignored. 

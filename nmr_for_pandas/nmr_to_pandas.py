@@ -32,6 +32,7 @@ class nmrData:
         axis_labels=True,
         invert_axes=False,
         show_cs=False,
+        show=False,
         threshold: Union[str, float, None] = "otsu",
         kwargs={},
     ):
@@ -79,6 +80,9 @@ class nmrData:
             Invert X and Y axes for NMR conventions
         show_cs : bool
             Annotate the figure with the contour start threshold
+            Default is False
+        show : bool
+            Whether to show an interactive matplotlib figure
             Default is False
         threshold : "otsu" | float | None
             The threshold above which contours at plotted. If "otsu" then the otsu method
@@ -152,8 +156,8 @@ class nmrData:
             **contour_kwargs,
         )
         if axis_labels:
-            ax.set_xlabel(self.udic[self.uc_dic["X"]["dim"]]["label"])
-            ax.set_ylabel(self.udic[self.uc_dic["Y"]["dim"]]["label"])
+            ax.set_xlabel(f'{self.udic[self.uc_dic["X"]["dim"]]["label"]} ppm')
+            ax.set_ylabel(f'{self.udic[self.uc_dic["Y"]["dim"]]["label"]} ppm')
 
         if invert_axes:
             ax.invert_xaxis()
