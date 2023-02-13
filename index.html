@@ -393,7 +393,8 @@
 </code></pre></div>
 <h2 id="plotting">Plotting</h2>
 <p>To create a matplotlib contour plot of the data:</p>
-<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Example 1&quot;</span>
+<span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">))</span>
 <span class="c1"># create figure</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
@@ -402,7 +403,8 @@
 </code></pre></div>
 <p><img alt="full" src="static/full_spectrum.png" /></p>
 <p>To zoom on a specific region:</p>
-<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Example 2&quot;</span>
+<span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">))</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Z==1 &amp; X_PPM &gt; 7.24 &amp; X_PPM &lt; 7.28 &amp; Y_PPM &gt; 124.8 &amp; Y_PPM &lt; 125.3&quot;</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
@@ -415,7 +417,7 @@
 <span class="n">colors</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="n">colors</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)])</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot; Example </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Z==0 &amp; X_PPM &gt; 7 &amp; X_PPM &lt; 9.5 &amp; Y_PPM &gt; 110 &amp; Y_PPM &lt; 125&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">show_cs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -428,8 +430,9 @@
 <h2 id="customizing-plots">Customizing plots</h2>
 <h3 id="colors">Colors</h3>
 <p>Any matplotlib colormap can be used in the following way by providing its name as a string:</p>
-<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">negative_contours</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
 </code></pre></div>
+<p><img alt="viridis" src="static/zoom_viridis.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If <code>colors</code> is provided then this takes precedence over any <code>cmap</code> definition.
